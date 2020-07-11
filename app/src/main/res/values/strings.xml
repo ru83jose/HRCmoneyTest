@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">HRCmoneyTest</string>
+    <string name="baseApi">https://jsonplaceholder.typicode.com</string>
+    <string name="imgLoadApi">https://ipsumimage.appspot.com</string>
+    <string name="defaultImgApi">https://ipsumimage.appspot.com/150,ffffff</string>
+    <string name="listParceKey">LIST_PARCE_DETAIL_KEY</string>
+</resources>
