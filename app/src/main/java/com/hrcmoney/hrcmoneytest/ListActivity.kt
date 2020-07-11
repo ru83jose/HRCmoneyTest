@@ -29,6 +29,7 @@ class ListActivity : AppCompatActivity() {
     var jsonData = listOf<Album>()
     private val gson = Gson()
     private var cellCount = 0
+    private val pageSize = 30
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -56,8 +57,8 @@ class ListActivity : AppCompatActivity() {
                     val progressBar = ProgressBar(this@ListActivity)
                     progressBar.execute()
                     GlobalScope.launch {
-                        if (cellCount <= jsonData.size - 30) {
-                            val last = cellCount + 30
+                        if (cellCount <= jsonData.size - pageSize) {
+                            val last = cellCount + pageSize
                             addCellToAdapter(cellCount, last)
                         }
                         progressBar.finish = true
@@ -95,7 +96,7 @@ class ListActivity : AppCompatActivity() {
                         response.toString().replace("id", "aid")
                     jsonData = gson.fromJson(adjustString, Array<Album>::class.java).toList()
                     imageStorage.clear()
-                    addCellToAdapter(0, 30)
+                    addCellToAdapter(0, pageSize)
                     it.close()
                     progressBar.finish = true
                 }
